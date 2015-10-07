@@ -17,6 +17,7 @@
     rainbow-delimiters
     hydra
     evil
+    evil-leader
     evil-surround
     )
   )			    
@@ -41,3 +42,4 @@
 (load "~/.emacs.d/global-config.el")
 (load "~/.emacs.d/text-mode.el")
 (load "~/.emacs.d/prog-mode.el")
+(load "~/.emacs.d/evil-mode.el")

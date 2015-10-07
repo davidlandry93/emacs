@@ -18,10 +18,12 @@
 
 ;; Make it so that the C-x k binding kills the current buffer instead of
 ;; offering a prompt.
-(defun kill-default-buffer ()
+(defun dl93/kill-default-buffer ()
   "Kill the currently active buffer"
   (interactive)
-  (let (kill-bufer-query-functions) (kill-buffer)))
+  (let (kill-buffer-query-functions) (kill-buffer)))
 (global-set-key (kbd "C-x k") 'kill-default-buffer)
 
 (setq-default indent-tabs-mode nil)
+
+(desktop-save-mode 1)
