@@ -22,6 +22,7 @@
     helm
     helm-ls-git
     magit
+    fill-column-indicator
     )
   )			    
 
