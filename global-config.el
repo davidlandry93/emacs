@@ -27,3 +27,5 @@
 (setq-default indent-tabs-mode nil)
 
 (desktop-save-mode 1)
+
+(global-set-key (kbd "C-x g") 'magit-status)
