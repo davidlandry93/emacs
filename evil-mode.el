@@ -7,9 +7,11 @@
 ;; Sucessive calls to this function doesn't seem to work; you have to map
 ;; everything at once.
 (evil-leader/set-key
-  "g" 'bookmark-jump
+  "g" 'helm-bookmarks
   "b" 'bookmark-set
-  "k" 'dl93/kill-default-buffer)
+  "k" 'dl93/kill-default-buffer
+  "f" 'helm-find
+  "h" 'helm-apropos)
 
 (require 'evil)
 (evil-mode t)

@@ -5,9 +5,6 @@
 (blink-cursor-mode 1)
 (setq inhibit-splash-screen t)
 
-(line-number-mode 1)
-(global-hl-line-mode 1)
-
 ;; Prevent too much font decoration. It's ugly anyway.
 (setq font-lock-maximum-decoration 2)
 
@@ -24,4 +21,4 @@
 (load-theme 'cyberpunk)
 
 (require 'powerline)
-;;(powerline-default-theme)
+(powerline-default-theme)

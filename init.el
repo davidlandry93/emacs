@@ -19,6 +19,9 @@
     evil
     evil-leader
     evil-surround
+    helm
+    helm-ls-git
+    magit
     )
   )			    
 
@@ -43,3 +46,4 @@
 (load "~/.emacs.d/text-mode.el")
 (load "~/.emacs.d/prog-mode.el")
 (load "~/.emacs.d/evil-mode.el")
+(load "~/.emacs.d/helm.el")
