@@ -25,8 +25,9 @@
     fill-column-indicator
     yasnippet
     flycheck
+    markdown-mode
     )
-  )			    
+  )
 
 (defun required-packages-installed-p ()
   (cl-loop for package in required-packages
@@ -50,3 +51,4 @@
 (load "~/.emacs.d/prog-mode.el")
 (load "~/.emacs.d/evil-mode.el")
 (load "~/.emacs.d/helm.el")
+(load "~/.emacs.d/markdown-mode.el")
