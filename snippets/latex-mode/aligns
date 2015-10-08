@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: aligns
+# key: eal
+# contributor: David Landry (davidlandry.xyz)
+# --
+\begin{align*}
+$0
+\end{align*}

@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: article
+# key: art
+# contributor: David Landry (davidlandry.xyz)
+# --
+
+\documentclass[letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[$4]{babel}
+$3
+\title{$1}
+\author{David Landry$2}
+
+\begin{document}
+\maketitle
+$0
+\end{document}
