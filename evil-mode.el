@@ -13,14 +13,15 @@
   "f" 'helm-find
   "h" 'helm-apropos)
 
-(global-set-key (kbd "C-j")
+(global-set-key (kbd "C-k")
                 (lambda ()
                   (interactive)
                   (evil-scroll-up nil)))
-(global-set-key (kbd "C-k")
+(global-set-key (kbd "C-j")
                 (lambda ()
                   (interactive)
                   (evil-scroll-down nil)))
 
 (require 'evil)
 (evil-mode t)
+;;; evil-mode.el ends here

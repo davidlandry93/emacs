@@ -21,7 +21,7 @@
 (defun dl93/kill-default-buffer ()
   "Kill the currently active buffer"
   (interactive)
-  (let (kill-buffer-query-functions) (kill-buffer)))
+  (let (kill-buffer-query-functions) (kill-buffer))
 (global-set-key (kbd "C-x k") 'kill-default-buffer)
 
 (setq-default indent-tabs-mode nil)
