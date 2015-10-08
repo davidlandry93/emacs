@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: for (int ...) { ... }
+# key: for
+# contributor: David Landry (davidlandry.xyz)
+# --
+for(int i=0; i < $1; i++)
+ {
+  $0
+ }

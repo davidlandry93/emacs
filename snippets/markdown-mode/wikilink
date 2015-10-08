@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: wiki-link
+# key: wl
+# contributor: David Landry (davidlandry.xyz)
+# --
+[${1:link-descrption}](/w/${2:pagename})$0

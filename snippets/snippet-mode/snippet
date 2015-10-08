@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: snippet
+# key: snip
+# --
+# -*- mode: snippet -*-
+# name: $1
+# key: $2
+# contributor: David Landry (davidlandry.xyz)
+# --
+$0

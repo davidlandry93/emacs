@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Figure
+# key: fig
+# contributor: David Landry (davidlandry.xyz)
+# --
+\begin{figure}
+\centering
+\includegraphics[scale=$1]{$2}
+\caption{$3}
+\end{figure}
+$4

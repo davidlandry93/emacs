@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: quote
+# key: eqo
+# contributor: David Landry (davidlandry.xyz)
+# --
+\begin{quote}
+$0
+\end{quote}

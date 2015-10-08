@@ -23,6 +23,7 @@
     helm-ls-git
     magit
     fill-column-indicator
+    yasnippet
     )
   )			    
 
@@ -37,6 +38,11 @@
   (dolist (package required-packages)
     (when (not (package-installed-p package))
       (package-install package))))
+
+(require 'yasnippet)
+(yas-global-mode 1)
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"))
 
 (require 'use-package)
 

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: usepackage
+# key: \use
+# contributor: David Landry (davidlandry.xyz)
+# --
+\usepackage[$2]{$3}$0
