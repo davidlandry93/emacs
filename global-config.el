@@ -29,3 +29,11 @@
 (desktop-save-mode 1)
 
 (global-set-key (kbd "C-x g") 'magit-status)
+
+(require 'yasnippet)
+(yas-global-mode 1)
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"))
+
+(require 'flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
