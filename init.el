@@ -25,6 +25,7 @@
     fill-column-indicator
     yasnippet
     flycheck
+    expand-region
     )
   )			    
 
