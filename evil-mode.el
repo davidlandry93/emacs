@@ -9,9 +9,13 @@
 (evil-leader/set-key
   "g" 'helm-bookmarks
   "b" 'bookmark-set
-  "k" 'dl93/kill-default-buffer
+  "q" 'dl93/kill-default-buffer
   "f" 'helm-find
-  "h" 'helm-apropos)
+  "a" 'helm-apropos
+  "h" 'windmove-left
+  "j" 'windmove-down
+  "k" 'windmove-up
+  "l" 'windmove-right)
 
 (global-set-key (kbd "C-k")
                 (lambda ()
