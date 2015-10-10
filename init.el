@@ -1,6 +1,7 @@
 
 ;; === Init ===
 
+(require 'cl)
 (require 'cl-lib)
 (require 'package)
 (add-to-list 'package-archives '("melpa-stable" . "http://melpa.org/packages/"))
@@ -26,13 +27,11 @@
 
 (use-package afternoon-theme
   :config
-  (load-theme 'afternoon))
+  (load-theme 'afternoon t))
 
-(use-package powerline
-  :config
-  (powerline-default-theme))
+(use-package rainbow-delimiters)
 
-(use-package raibow-delimiters)
+(use-package fill-column-indicator)
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -62,23 +61,27 @@
   :bind (("M-x" . helm-M-x)
          ("C-x C-f" . helm-find-files)
          ("C-x C-b" . helm-buffers-list))
-  :config
+  :init
   (require 'helm-config))
 
 (use-package helm-ls-git
   :bind (("C-x C-g" . helm-ls-git-ls)))
 
-(use-package fill-column-indicator)
-
 
 ;; === Editor config ===
 
-(use-package evil-mode
+
+(use-package evil
   :init
-  (use-package evil-surround
-    :config
-    (global-evil-surround-mode 1))
-  (use-package evil-leader
+    (evil-mode t))
+
+(defun dl93/kill-default-buffer ()
+  "Kill the currently active buffer"
+  (interactive)
+  (let (kill-buffer-query-functions) (kill-buffer)))
+
+(use-package evil-leader
+    :init (global-evil-leader-mode)
     :config
     (global-evil-leader-mode 1)
     (evil-leader/set-leader ",")
@@ -92,53 +95,34 @@
       "h" 'windmove-left
       "j" 'windmove-down
       "k" 'windmove-up
-      "l" 'windmove-right)
-    (evil-mode t)
-  :bind (("C-k" . (lambda () (interactive) (evil-scroll-up nil)))
-         ("C-j" . (lambda () (interactive) (evil-scroll-down nil))))
-  :config
-  (evil-mode t)))
+      "l" 'windmove-right))
 
 (use-package yasnippet
-  :config
+  :init
   (yas-global-mode 1)
+  :config
   (setq yas-snippet-dirs
         '("~/.emacs.d/snippets")))
-
-(use-package expand-region
-  :bind ("C-=" . er/expand-region))
-
-(use-package flycheck
-  :config
-  (add-hook 'after-init-hook #'global-flycheck-mode))
 
 (add-hook 'text-mode-hook (lambda ()
                             (turn-on-auto-fill)
                             (setq show-trailing-whitespace 't)))
 
 (setq-default fill-column 100)
-
 (setq require-final-newline t)
 (fset 'yes-or-no-p 'y-or-n-p)
+(setq make-backup-files nil)
+(setq-default indent-tabs-mode nil)
 
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (set-language-environment "UTF-8")
 (prefer-coding-system 'utf-8)
 
-(defun save-all ()
+(defun dl93/save-all ()
   (interactive)
   (save-some-buffers t))
-(add-hook 'focus-out-hook 'save-all)
-
-(setq make-backup-files nil)
-
-(defun dl93/kill-default-buffer ()
-  "Kill the currently active buffer"
-  (interactive)
-  (let (kill-buffer-query-functions) (kill-buffer)))
-
-(setq-default indent-tabs-mode nil)
+(add-hook 'focus-out-hook 'dl93/save-all)
 
 (desktop-save-mode 1)
 
@@ -150,25 +134,16 @@
   :bind (("C-c C-c" . markdown-preview))
   :config (setq markdown-command "pandoc"))
 
-(use-package auctex
-  :config (add-hook 'latex-mode-hook 'tex-source-correlate-mode))
-  
+(use-package tex
+  :ensure auctex
+  :config (progn
+            (add-hook 'latex-mode-hook 'tex-source-correlate-mode)
+            (setq font-latex-fontify-sectioning 1.0)))
+
 
 ;; === Other packages ===
 
 (use-package magit
   :bind (("C-x g" . magit-status)))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+

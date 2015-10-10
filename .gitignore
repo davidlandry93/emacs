@@ -4,4 +4,4 @@ bookmarks
 auto-save-list/*
 *.elc
 .emacs.desktop*
-approved-themes.el
+url/*
