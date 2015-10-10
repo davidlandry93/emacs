@@ -26,6 +26,7 @@
     yasnippet
     flycheck
     markdown-mode
+    expand-region
     )
   )
 

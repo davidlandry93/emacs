@@ -37,3 +37,6 @@
 
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
