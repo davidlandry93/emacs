@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: subsubsection
+# key: sssec
+# contributor: David Landry (davidlandry.xyz)
+# --
+\subsubsection{$1}
+$0

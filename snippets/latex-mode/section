@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: section
+# key: sec
+# contributor: David Landry (davidlandry.xyz)
+# --
+\section{$1}
+$0

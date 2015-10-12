@@ -15,7 +15,6 @@
       (package-install 'use-package)))
 
 (require 'use-package)
-(setq use-package-always-ensure t)
 
 ;; If the gpg executable is not found disable signature checking.
 (defun sanityinc/package-maybe-enable-signatures()
@@ -72,8 +71,9 @@
 
 
 (use-package evil
-  :init
-    (evil-mode t))
+  :init (evil-mode t)
+  :bind (("C-k" . evil-scroll-up)
+         ("C-j" . evil-scroll-down)))
 
 (defun dl93/kill-default-buffer ()
   "Kill the currently active buffer"
@@ -91,18 +91,22 @@
       "b" 'bookmark-set
       "q" 'dl93/kill-default-buffer
       "f" 'helm-find
-      "a" 'helm-apropos
-      "h" 'windmove-left
-      "j" 'windmove-down
-      "k" 'windmove-up
-      "l" 'windmove-right))
+      "h" 'helm-apropos
+      "a" 'windmove-left
+      "s" 'windmove-down
+      "w" 'windmove-up
+      "d" 'windmove-right))
+
+(use-package evil-surround
+  :ensure t
+  :init (global-evil-surround-mode t))
 
 (use-package yasnippet
   :init
-  (yas-global-mode 1)
-  :config
-  (setq yas-snippet-dirs
-        '("~/.emacs.d/snippets")))
+  (progn
+    (setq yas-snippet-dirs
+          '("~/.emacs.d/snippets"))
+    (yas-global-mode 1)))
 
 (add-hook 'text-mode-hook (lambda ()
                             (turn-on-auto-fill)
@@ -137,8 +141,15 @@
 (use-package tex
   :ensure auctex
   :config (progn
-            (add-hook 'latex-mode-hook 'tex-source-correlate-mode)
+            (add-hook 'latex-mode-hook (tex-source-correlate-mode t))
             (setq font-latex-fontify-sectioning 1.0)))
+
+(use-package cmake-mode
+  :mode "\\.cmake\\'"
+  :mode "CMakeLists.txt\\'")
+
+(use-package cmake-font-lock
+  :config (cmake-font-lock-activate))
 
 
 ;; === Other packages ===
@@ -146,4 +157,23 @@
 (use-package magit
   :bind (("C-x g" . magit-status)))
 
+(use-package diffview
+  :ensure t)
 
+(use-package auto-complete
+  :init (ac-set-trigger-key "TAB")
+  :config (ac-config-default))
+
+(use-package expand-region
+  :bind (("C-=" . er/expand-region)))
+
+(use-package multiple-cursors
+  :ensure t
+  :config (evil-leader/set-key "m" 'mc/edit-lines))
+
+(use-package smartparens
+  :ensure t)
+
+
+;; === Shortcut to files ===
+(global-set-key (kbd "<f10>") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
