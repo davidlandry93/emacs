@@ -4,7 +4,7 @@
 (require 'cl)
 (require 'cl-lib)
 (require 'package)
-(add-to-list 'package-archives '("melpa-stable" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
 (setq package-enable-at-startup nil)
 (package-initialize)
@@ -61,11 +61,12 @@
 
 (use-package helm
   :ensure t
-  :bind (("M-x" . helm-M-x)
+  :init (progn
+          (require 'helm-config)
+          (helm-mode))
+  :bind (;("M-x" . helm-M-x)
          ("C-x C-f" . helm-find-files)
-         ("C-x C-b" . helm-buffers-list))
-  :init
-  (require 'helm-config))
+         ("C-x C-b" . helm-buffers-list)))
 
 (use-package helm-ls-git
   :ensure t
@@ -73,7 +74,6 @@
 
 
 ;; === Editor config ===
-
 
 (use-package evil
   :init (evil-mode t)
