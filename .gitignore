@@ -1,5 +1,7 @@
 elpa/*
 ac-comphist.dat
+.mc-lists.el
+srecode-map.el
 bookmarks
 auto-save-list/*
 *.elc

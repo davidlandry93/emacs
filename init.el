@@ -69,7 +69,6 @@
 
 ;; === Editor config ===
 
-
 (use-package evil
   :init (evil-mode t)
   :bind (("C-k" . evil-scroll-up)
@@ -151,6 +150,8 @@
 (use-package cmake-font-lock
   :config (cmake-font-lock-activate))
 
+(use-package matlab-mode
+  :ensure t)
 
 ;; === Other packages ===
 
