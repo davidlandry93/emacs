@@ -25,12 +25,15 @@
 ;; === Appearance ===
 
 (use-package afternoon-theme
+  :ensure t
   :config
   (load-theme 'afternoon t))
 
-(use-package rainbow-delimiters)
+(use-package rainbow-delimiters
+  :ensure t)
 
-(use-package fill-column-indicator)
+(use-package fill-column-indicator
+  :ensure t)
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -57,6 +60,7 @@
 ;; === Helm ===
 
 (use-package helm
+  :ensure t
   :bind (("M-x" . helm-M-x)
          ("C-x C-f" . helm-find-files)
          ("C-x C-b" . helm-buffers-list))
@@ -64,6 +68,7 @@
   (require 'helm-config))
 
 (use-package helm-ls-git
+  :ensure t
   :bind (("C-x C-g" . helm-ls-git-ls)))
 
 
@@ -81,6 +86,7 @@
   (let (kill-buffer-query-functions) (kill-buffer)))
 
 (use-package evil-leader
+    :ensure t
     :init (global-evil-leader-mode)
     :config
     (global-evil-leader-mode 1)
@@ -102,6 +108,7 @@
   :init (global-evil-surround-mode t))
 
 (use-package yasnippet
+  :ensure t
   :init
   (progn
     (setq yas-snippet-dirs
@@ -134,6 +141,7 @@
 ;; === Language-specific support ===
 
 (use-package markdown-mode
+  :ensure t
   :mode "\\.md\\'"
   :bind (("C-c C-c" . markdown-preview))
   :config (setq markdown-command "pandoc"))
