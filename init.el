@@ -169,8 +169,10 @@
   :ensure t)
 
 (use-package auto-complete
-  :init (ac-set-trigger-key "TAB")
-  :config (ac-config-default))
+  :init 
+  :config (progn
+            (ac-set-trigger-key "TAB")
+            (ac-config-default)))
 
 (use-package expand-region
   :bind (("C-=" . er/expand-region)))
