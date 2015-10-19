@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: bmatrix
+# key: ebm
+# contributor: David Landry (davidlandry.xyz)
+# --
+\begin{bmatrix}
+  $0
+\end{bmatrix}

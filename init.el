@@ -143,8 +143,11 @@
 (use-package markdown-mode
   :ensure t
   :mode "\\.md\\'"
-  :bind (("C-c C-c" . markdown-preview))
-  :config (setq markdown-command "pandoc"))
+  :config (progn
+            (global-set-key (kbd "C-c C-c") 'markdown-preview)
+            (setq markdown-command "pandoc")))
+(eval-after-load 'markdown-mode
+  '(define-key markdown-mode-map (kbd "C-c C-c") 'markdown-preview))
 
 (use-package tex
   :ensure auctex
@@ -169,8 +172,10 @@
   :ensure t)
 
 (use-package auto-complete
-  :init (ac-set-trigger-key "TAB")
-  :config (ac-config-default))
+  :init 
+  :config (progn
+            (ac-set-trigger-key "TAB")
+            (ac-config-default)))
 
 (use-package expand-region
   :bind (("C-=" . er/expand-region)))
@@ -182,6 +187,8 @@
 (use-package smartparens
   :ensure t)
 
+(use-package writeroom-mode
+  :init (setq writeroom-width 100))
 
 ;; === Shortcut to files ===
 (global-set-key (kbd "<f10>") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
