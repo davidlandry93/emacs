@@ -144,7 +144,9 @@
   :ensure t
   :mode "\\.md\\'"
   :bind (("C-c C-c" . markdown-preview))
-  :config (setq markdown-command "pandoc"))
+  :config (progn
+            (setq markdown-command "pandoc")
+            (evil-leader/set-key "t" 'markdown-cycle)))
 
 (use-package tex
   :ensure auctex
@@ -182,6 +184,15 @@
   :config (evil-leader/set-key "m" 'mc/edit-lines))
 
 (use-package smartparens
+  :ensure t)
+
+(use-package writeroom-mode
+  :ensure t
+  :init (setq writeroom-width fill-column)
+  :bind ("C-c C-w" . writeroom-mode))
+(global-set-key (kbd "C-c C-f C-f") 'toggle-frame-fullscreen)
+
+(use-package keyfreq
   :ensure t)
 
 
