@@ -145,7 +145,7 @@
   :mode "\\.md\\'"
   :config (progn
             (setq markdown-command "pandoc")
-            (evil-leader/set-key "t" . 'markdown-cycle)))
+            (evil-leader/set-key "t" 'markdown-cycle)))
 (eval-after-load 'markdown-mode
   '(define-key markdown-mode-map (kbd "C-c C-c") 'markdown-preview))
 
