@@ -56,7 +56,6 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode 1)
 (add-hook 'prog-mode-hook 'fci-mode 1)
 
-
 ;; === Helm ===
 
 (use-package helm
@@ -93,6 +92,7 @@
     (evil-leader/set-leader ",")
     (setq evil-leader/in-all-states 1)
     (evil-leader/set-key
+      "1" 'delete-other-windows
       "g" 'helm-bookmarks
       "b" 'bookmark-set
       "q" 'dl93/kill-default-buffer
@@ -114,6 +114,13 @@
     (setq yas-snippet-dirs
           '("~/.emacs.d/snippets"))
     (yas-global-mode 1)))
+
+(use-package flycheck
+  :ensure t
+  :config (progn
+            (add-hook 'after-init-hook #'global-flycheck-mode)
+            (evil-leader/set-key "n" 'flycheck-next-error)
+            (evil-leader/set-key "p" 'flycheck-previous-error)))
 
 (add-hook 'text-mode-hook (lambda ()
                             (turn-on-auto-fill)
@@ -155,12 +162,27 @@
             (add-hook 'latex-mode-hook (tex-source-correlate-mode t))
             (setq font-latex-fontify-sectioning 1.0)))
 
+;; cpp
+
+(use-package auto-complete-clang
+  :ensure t)
+
+(use-package cmake-ide
+  :ensure t
+  :config (cmake-ide-setup))
+
 (use-package cmake-mode
   :mode "\\.cmake\\'"
   :mode "CMakeLists.txt\\'")
 
 (use-package cmake-font-lock
+  :ensure t
   :config (cmake-font-lock-activate))
+
+(use-package cpputils-cmake
+  :ensure t)
+
+(add-hook 'c++-mode-hook (evil-leader/set-key "c" 'cmake-ide-compile))
 
 (use-package matlab-mode
   :ensure t)
