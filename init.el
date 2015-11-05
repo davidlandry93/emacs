@@ -167,8 +167,11 @@
 (use-package auto-complete-clang
   :ensure t)
 
+(use-package rtags)
+
 (use-package cmake-ide
   :ensure t
+  :init (require 'rtags)
   :config (cmake-ide-setup))
 
 (use-package cmake-mode
