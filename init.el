@@ -4,6 +4,7 @@
 (require 'cl)
 (require 'cl-lib)
 (require 'package)
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
 (setq package-enable-at-startup nil)
@@ -184,6 +185,21 @@
 
 (add-hook 'c++-mode-hook (evil-leader/set-key "c" 'cmake-ide-compile))
 
+;; clojure
+(use-package clojure-mode
+  :ensure t)
+
+(use-package cider
+  :pin melpa-stable)
+(use-package cider
+  :ensure t
+  :init (progn
+          (add-hook 'cider-mode-hook #'eldoc-mode))
+  :config (progn
+            (evil-leader/set-key-for-mode 'clojure-mode "jv" 'cider-jump-to-var)
+            (evil-leader/set-key-for-mode 'cider-test-report-mode "jv" 'cider-test-jump)))
+  
+
 (use-package matlab-mode
   :ensure t)
 
@@ -202,6 +218,7 @@
             (ac-config-default)))
 
 (use-package expand-region
+  :ensure t
   :bind (("C-=" . er/expand-region)))
 
 (use-package multiple-cursors
@@ -214,14 +231,11 @@
 (use-package writeroom-mode
   :ensure t
   :init (setq writeroom-width fill-column)
-  :bind ("C-c C-w" . writeroom-mode))
+  :bind ("C-c C-w" . global-writeroom-mode))
 (global-set-key (kbd "C-c C-f C-f") 'toggle-frame-fullscreen)
 
 (use-package keyfreq
   :ensure t)
-
-(use-package writeroom-mode
-  :init (setq writeroom-width 100))
 
 ;; === Shortcut to files ===
 (global-set-key (kbd "<f10>") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
