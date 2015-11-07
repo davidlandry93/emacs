@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: coding
+# key: coding
+# contributor: David Landry (davidlandry.xyz)
+# --
+# -*- coding: utf-8 -*-

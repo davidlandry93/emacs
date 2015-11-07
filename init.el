@@ -5,6 +5,7 @@
 (require 'cl-lib)
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 
 (setq package-enable-at-startup nil)
 (package-initialize)
@@ -161,6 +162,12 @@
   :config (progn
             (add-hook 'latex-mode-hook (tex-source-correlate-mode t))
             (setq font-latex-fontify-sectioning 1.0)))
+
+;; python
+
+(use-package elpy
+  :ensure t
+  :init (elpy-enable))
 
 ;; cpp
 
