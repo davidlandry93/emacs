@@ -167,7 +167,8 @@
 
 (use-package elpy
   :ensure t
-  :init (elpy-enable))
+  :init (elpy-enable)
+  :config (evil-leader/set-key "t" 'elpy-test-pytest-runner))
 
 ;; cpp
 
