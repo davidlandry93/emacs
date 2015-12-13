@@ -200,8 +200,6 @@
   :ensure t)
 
 (use-package cider
-  :pin melpa-stable)
-(use-package cider
   :ensure t
   :init (progn
           (add-hook 'cider-mode-hook #'eldoc-mode))
@@ -246,6 +244,9 @@
 
 (use-package keyfreq
   :ensure t)
+
+;; ansi-term
+(add-hook 'term-mode-hook (lambda() (setq yas-dont-activate t)))
 
 ;; === Shortcut to files ===
 (global-set-key (kbd "<f10>") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
