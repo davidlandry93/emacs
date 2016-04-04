@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: hyperref
+# key: usehyp
+# contributor: David Landry (davidlandry.xyz)
+# --
+\usepackage[hidelinks]{hyperref}

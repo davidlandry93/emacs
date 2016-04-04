@@ -1,0 +1,27 @@
+# -*- mode: snippet -*-
+# name: beamer
+# key: beamer
+# contributor: David Landry (davidlandry.xyz)
+# --
+
+\documentclass[letterpaper]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[$4]{babel}
+$3
+\title{$1}
+\subtitle{$2}
+\author{David Landry$3}
+
+\institute[Univertité Laval]
+{
+  Département d'informatique et de génie logiciel \\
+  Université Laval
+}
+
+\begin{document}
+\maketitle
+$0
+\end{document}
